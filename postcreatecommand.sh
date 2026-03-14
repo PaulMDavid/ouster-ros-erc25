@@ -6,7 +6,7 @@ source /opt/ros/${ROS_DISTRO}/setup.bash
 
 # Build the workspace
 cd /workspace
-colcon build --symlink-install
+colcon build #--symlink-install not for this one apparently
 
 # Source the workspace we just built
 source /workspace/install/setup.bash

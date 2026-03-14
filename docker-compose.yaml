@@ -12,10 +12,13 @@ services:
     # Mount your project directories
     #NOTE: remove  or add volumes as needed, and adjust paths if necessary
     volumes:
-      - .:/workspace/src/ouster-ros
+      - ./ouster-ros:/workspace/src/ouster-ros
+      - ./ouster-sensor-msgs:/workspace/src/ouster-sensor-msgs
+      - ./LICENSE:/workspace/src/LICENSE
       - ./data:/workspace/data
       - ./config:/workspace/config
       - /tmp/.X11-unix:/tmp/.X11-unix:rw
+      - ./ouster-ros/config:/workspace/install/ouster_ros/share/ouster_ros/config
 
     environment:
       - ROS_DISTRO=humble
@@ -36,5 +39,5 @@ services:
 
     working_dir: /workspace
 
-    command: ros2 launch ouster_ros driver.launch.py sensor_hostname:=169.254.61.114 lidar_mode:=1024x10
+    command: ros2 launch ouster_ros driver.launch.py sensor_hostname:=169.254.61.114 lidar_mode:=1024x10 viz:=false
     #command: tail -f /dev/null
